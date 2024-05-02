@@ -58,6 +58,8 @@ roslaunch interbotix_xslocobot_joy xslocobot_joy.launch robot_model:=locobot_wx2
 Remote:
 roslaunch interbotix_xslocobot_descriptions remote_view.launch rviz_frame:=map
 
+Note:
+
 
 Some hints
 
@@ -66,3 +68,5 @@ ros2 topic inof /(topic name)
 ros2 interface show (massage)
 rosmsg show
 ros2 topic echo /(topic name)
+
+
