@@ -1,0 +1,68 @@
+How to turn on and off
+Passwords are: locobot
+Power on
+Battery: one time click
+Locobot’s Computer; one time click.
+Mobile base (create 3): inserting the dock
+Power off
+Battery: hold the bottom for 3 sec.
+Locobot’s Computer; sudo poweroff.
+Mobile base (create 3): hold its bigger bottom for 10 sec
+
+For Setup Locobot from scratch
+
+How to run the Locobot if It is crashed? (If not, do not use this tutorial)
+
+You need a remote computer to send the commands and receive data from the Locobot’s computer.
+After connecting a monitor, mouse and keyboard to the locobot you need to install different packages on both locobot and remote computer.
+For remote Computer:
+1- Intstalling Uunutu 20.04 from
+wsl --install -d Ubuntu-20.04
+2- install ROS rvis and rosdep
+2- Edit the file of bashrc with this command: (gedit ~/.bashrc) and check if these part are added or add this parts:
+
+source /opt/ros/noetic/setup.bash
+# Interbotix Configurations
+source /home/mhsnar/interbotix_ws/devel/setup.bash
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+export INTERBOTIX_XSLOCOBOT_BASE_TYPE=create3
+export ROS_MASTER_URI=http://192.168.1.4:11311
+export ROS_IP=$(echo `hostname -I | cut -d" " -f1`)
+if [ -z "$ROS_IP" ]; then
+	export ROS_IP=127.0.0.1
+fi
+For Robot’s Computer
+1- Intstalling Uunutu 20.04 from booted flash.
+2- update and upgrde apt
+3- reboot
+4- Install interbotix pakage (Do not instsall ROS seperately)
+
+
+5- Base Connection check (Installation step for base in troubleshooting part of the cite)
+6- Run the code
+
+Note: If remote control did not work go to chenge bash rc to edit like this:
+#export ROS_IP=$(echo `hostname -I | cut -d" " -f1`)
+#if [ -z "$ROS_IP" ]; then
+#	export ROS_IP=127.0.0.1
+#fi
+
+
+export ROS_ID=192.168.1.4
+
+For Doing SLAM via joystick movement
+ROBOT: 
+roslaunch interbotix_xslocobot_nav xslocobot_nav.launch robot_model:=locobot_wx250s use_lidar:=true rtabmap_args:=-d
+ROBOT: 
+roslaunch interbotix_xslocobot_joy xslocobot_joy.launch robot_model:=locobot_wx250s launch_driver:=false
+Remote:
+roslaunch interbotix_xslocobot_descriptions remote_view.launch rviz_frame:=map
+
+
+Some hints
+
+ros2 topic list
+ros2 topic inof /(topic name)
+ros2 interface show (massage)
+rosmsg show
+ros2 topic echo /(topic name)
