@@ -59,7 +59,7 @@ Remote:
 roslaunch interbotix_xslocobot_descriptions remote_view.launch rviz_frame:=map
 
 Note:
-
+Always be aware of the robot's IP you are using in the bashrc file. 
 
 Some hints
 
