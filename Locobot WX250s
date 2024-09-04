@@ -31,6 +31,10 @@ export ROS_IP=$(echo `hostname -I | cut -d" " -f1`)
 if [ -z "$ROS_IP" ]; then
 	export ROS_IP=127.0.0.1
 fi
+
+
+
+
 For Robot’s Computer
 1- Intstalling Uunutu 20.04 from booted flash.
 2- update and upgrde apt
@@ -41,7 +45,7 @@ For Robot’s Computer
 5- Base Connection check (Installation step for base in troubleshooting part of the cite)
 6- Run the code
 
-Note: If remote control did not work go to chenge bash rc to edit like this:
+Note: If remote control did not work go to chenge the locobot's computer bash rc to edit like this:
 #export ROS_IP=$(echo `hostname -I | cut -d" " -f1`)
 #if [ -z "$ROS_IP" ]; then
 #	export ROS_IP=127.0.0.1
